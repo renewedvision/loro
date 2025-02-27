@@ -463,6 +463,23 @@ impl LoroDoc {
         )
     }
 
+    pub fn subscrib_direct(
+        &self,
+        container_id: &ContainerID,
+        subscriber: loro::event::Subscriber,
+    ) -> Arc<Subscription> {
+        Arc::new(
+            self.doc
+                .subscribe(&(container_id.into()), subscriber)
+                .into(),
+        )
+    }
+
+    pub fn subscribe_root_direct(&self, subscriber: loro::event::Subscriber) -> Arc<Subscription> {
+        // self.doc.subscribe_root(callback)
+        Arc::new(self.doc.subscribe_root(subscriber).into())
+    }
+
     /// Subscribe the local update of the document.
     pub fn subscribe_local_update(
         &self,
