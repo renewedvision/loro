@@ -116,7 +116,6 @@ pub enum LoroTreeError {
     TreeNodeDeletedOrNotExist(TreeID),
 }
 
-#[non_exhaustive]
 #[derive(Error, Debug, PartialEq)]
 pub enum LoroEncodeError {
     #[error("The frontiers are not found in this doc: {0}")]
